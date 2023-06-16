@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="z-20 w-screen h-3/4 bg-stone-800 md:h-1/2 relative bottom-0 flex flex-col-reverse md:flex-row">
+    <footer className="z-20 w-screen h-4screen/5 bg-stone-800 md:h-screen/2 relative bottom-0 flex flex-col-reverse md:flex-row">
       <div className="text-3xl md:text-5xl text-slate-200 flex items-center justify-center px-6 py-6 md:p-5 flex-1">
         Drop & Ship <span className="text-xl"> ©</span>
       </div>

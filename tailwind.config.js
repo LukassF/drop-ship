@@ -14,6 +14,11 @@ module.exports = {
       },
       height: {
         "500px": "500px",
+        "screen/2": "50vh",
+        "4screen/5": "80vh",
+      },
+      fontSize: {
+        "10px": "10px",
       },
     },
   },
