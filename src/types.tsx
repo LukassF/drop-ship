@@ -14,3 +14,9 @@ export type cardProps = {
   inBasket: boolean | null;
   addToCart: (id: number) => void;
 };
+
+export type categoriesType = {
+  gender: string;
+  style: string;
+  type: string;
+};

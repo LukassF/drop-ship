@@ -2,71 +2,158 @@
 
 import Card from "./card";
 import Footer from "./footer";
-import { useState } from "react";
+import { createRef, useEffect, useRef, useState } from "react";
 import applyFilters from "@/app/functions/apply_filters";
-import { shopProps } from "@/types";
+import { categoriesType, shopProps } from "@/types";
+import chooseCategory from "@/app/functions/chooseCategory";
+
+const genderArray = ["Women", "Men", "Unisex"];
+const clothesStyles = [
+  "Formal",
+  "Semi-formal",
+  "At-home",
+  "Sportswear",
+  "Underwear",
+  "Other",
+];
+const clothesTypes = ["Headwear", "Top", "Bottom", "Handwear", "Shoes"];
 
 export default function Shop(props: shopProps) {
-  const [categories, setCategories] = useState<string[] | object>([]);
+  const [categories, setCategories] = useState<categoriesType>({
+    gender: "",
+    style: "",
+    type: "",
+  });
+  const [categoriesArray, setCategoriesArray] = useState<string[]>([]);
+
+  const genderRef = createRef<HTMLSelectElement>();
+  const typeRef = createRef<HTMLSelectElement>();
+  const styleRef = createRef<HTMLSelectElement>();
+
+  useEffect(() => {
+    setCategoriesArray([]);
+    Object.values(categories).forEach((item) => {
+      if (item.length !== 0) setCategoriesArray((prev) => [...prev, item]);
+    });
+  }, [categories]);
 
   return (
     <main className="w-screen h-screen mx-0 px-0 overflow-x-hidden bg-slate-100">
-      <header className="w-screen mt-16 bg-cover bg-center bg-[url('https://wallpaperaccess.com/full/6836716.png')] flex items-end">
+      <header className="w-screen mt-20 md:mt-12 h-96 bg-cover bg-center bg-transparent md:bg-[url('https://wallpaperaccess.com/full/6836716.png')] flex items-end">
         <form
           action={(data) => applyFilters(data, setCategories)}
-          className="w-full h-60 md:h-16 -mt-2 text-lg flex flex-col md:flex-row [&>*]:h-full [&>*]:flex-1  [&>*]:bg-stone-200 [&>*]:text-stone-900 [&>*]:appearance-none [&>*]:border-r-2  [&>*]:border-b-2 [&>*]:border-stone-500"
+          className="px-2 pr-5 w-full h-16 hidden md:flex gap-2 -mt-2 text-lg [&>*]:h-3/4 [&>*]:rounded-xl [&>*]:flex-1   [&>*]:text-center [&>*]:text-stone-900 [&>*]:appearance-none"
         >
-          <select className="px-3" name="gender" defaultValue="">
+          <select
+            className="px-3"
+            name="gender"
+            defaultValue=""
+            ref={genderRef}
+          >
             <option value="" disabled hidden>
               Select gender
             </option>
-            <option value="Women">Women</option>
-            <option value="Men">Men</option>
-            <option value="Unisex">Unisex</option>
+            {genderArray.map((gender) => (
+              <option key={gender} value={gender}>
+                {gender}
+              </option>
+            ))}
           </select>
-          <select className="px-3" name="style" defaultValue="">
+          <select className="px-3" name="style" defaultValue="" ref={styleRef}>
             <option value="" disabled hidden>
               Select style
             </option>
-            <option value="Formal">Formal</option>
-            <option value="Semi-formal">Semi-formal</option>
-            <option value="At-home">At Home</option>
-            <option value="Sportswear">Sportswear</option>
-            <option value="Underwear">Underwear</option>
-            <option value="Miscellaneous">Miscellaneous</option>
+            {clothesStyles.map((style) => (
+              <option key={style} value={style}>
+                {style}
+              </option>
+            ))}
           </select>
-          <select className="px-3" name="type" defaultValue="">
+          <select className="px-3" name="type" defaultValue="" ref={typeRef}>
             <option value="" disabled hidden>
               Select type
             </option>
-            <option value="Headwear">Headwear</option>
-            <option value="Top">Top</option>
-            <option value="Bottom">Bottom</option>
-            <option value="Handwear">Handwear</option>
-            <option value="Shoes">Shoes</option>
+
+            {clothesTypes.map((type) => (
+              <option key={type} value={type}>
+                {type}
+              </option>
+            ))}
           </select>
-          <div className="flex [&>*]:flex-1 [&>*]:h-full text-slate-200 px-0">
+          <div className="flex [&>*]:flex-1 [&>*]:rounded-xl [&>*]:h-full text-slate-200 px-0 gap-2 ">
             <button type="submit" className="bg-orange-200 hover:bg-orange-300">
               <span className=" md:max-lg:hidden">Apply </span>
               <i aria-hidden className="fa fa-check"></i>
             </button>
             <button
               type="button"
-              className="bg-gray-400 hover:bg-gray-500 hover:text-slate-100"
+              className="bg-gray-300 hover:bg-gray-500 hover:text-slate-100"
+              onClick={() => {
+                if (genderRef.current && styleRef.current && typeRef.current) {
+                  genderRef.current.value = "";
+                  styleRef.current.value = "";
+                  typeRef.current.value = "";
+                }
+              }}
             >
               <span className="md:max-lg:hidden">Clear All </span>{" "}
               <i aria-hidden className="fa-solid fa-filter-circle-xmark"></i>
             </button>
           </div>
         </form>
+
+        <form className="w-full h-full p-5  flex md:hidden flex-col items-center justify-center gap-3 xs:gap-4">
+          <h1 className="text-xl">Apply filters</h1>
+          <hr className="h-px w-full bg-stone-900"></hr>
+          <div className="w-full flex gap-x-4">
+            {genderArray.map((gender) => (
+              <div
+                key={gender}
+                onClick={(e) =>
+                  chooseCategory(e.target, setCategories, "gender")
+                }
+                className="cursor-pointer hover:bg-amber-200 px-5 py-2 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
+              >
+                {gender}
+              </div>
+            ))}
+          </div>
+          <hr className="h-px w-full bg-stone-900"></hr>
+          <div className="w-full flex gap-x-4 gap-y-2 flex-wrap">
+            {clothesStyles.map((style) => (
+              <div
+                key={style}
+                onClick={(e) =>
+                  chooseCategory(e.target, setCategories, "style")
+                }
+                className="cursor-pointer hover:bg-amber-200 px-5 py-2 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
+              >
+                {style}
+              </div>
+            ))}
+          </div>
+          <hr className="h-px w-full bg-stone-900"></hr>
+          <div className="w-full flex gap-x-4 gap-y-2 flex-wrap">
+            {clothesTypes.map((type) => (
+              <div
+                key={type}
+                onClick={(e) => chooseCategory(e.target, setCategories, "type")}
+                className="cursor-pointer hover:bg-amber-200 px-5 py-2 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
+              >
+                {type}
+              </div>
+            ))}
+          </div>
+          <hr className="h-px w-full bg-stone-900"></hr>
+        </form>
       </header>
 
       <section className="min-h-screen flex flex-col justify-between mt-10">
-        <span className="px-0 md:px-40 w-full flex flex-col sm:flex-row gap-5 justify-center items-center">
+        <span className="px-0 md:px-40 w-full flex flex-col lg:flex-row gap-5 justify-center items-center">
           <h2 className="text-3xl sm:text-4xl">What we found! </h2>
           <h2 className="text-lg sm:text-2xl text-stone-400">
-            {(categories as string[]).length !== 0
-              ? (categories as string[]).join(" / ")
+            {categoriesArray.length !== 0
+              ? categoriesArray.join(" / ")
               : "All Products"}
           </h2>
         </span>

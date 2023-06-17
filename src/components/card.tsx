@@ -51,7 +51,7 @@ export default function Card(props: cardProps) {
             {sizes.map((size) => (
               <button
                 key={Math.random()}
-                className=" w-10 h-10 bg-stone-900 rounded-3xl text-slate-100 hover:bg-stone-100 hover:text-stone-900 transition-all duration-300"
+                className="cursor-default w-10 h-10 bg-stone-900 rounded-3xl text-slate-100"
               >
                 {size}
               </button>
