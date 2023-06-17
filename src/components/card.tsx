@@ -1,11 +1,10 @@
 "use client";
 
 import { cardProps } from "@/types";
-import Link from "next/link";
+
+export const sizes = ["XXS", "XS", "S", "M", "L", "XL", "XXL"];
 
 export default function Card(props: cardProps) {
-  const sizes = ["XXS", "XS", "S", "M", "L", "XL", "XXL"];
-
   return (
     <div
       tabIndex={0}

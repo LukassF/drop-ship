@@ -26,10 +26,6 @@ export default function Shop(props: shopProps) {
   });
   const [categoriesArray, setCategoriesArray] = useState<string[]>([]);
 
-  const genderRef = createRef<HTMLSelectElement>();
-  const typeRef = createRef<HTMLSelectElement>();
-  const styleRef = createRef<HTMLSelectElement>();
-
   useEffect(() => {
     setCategoriesArray([]);
     Object.values(categories).forEach((item) => {
@@ -44,12 +40,7 @@ export default function Shop(props: shopProps) {
           action={(data) => applyFilters(data, setCategories)}
           className="px-2 pr-5 w-full h-16 hidden md:flex gap-2 -mt-2 text-lg [&>*]:h-3/4 [&>*]:rounded-xl [&>*]:flex-1   [&>*]:text-center [&>*]:text-stone-900 [&>*]:appearance-none"
         >
-          <select
-            className="px-3"
-            name="gender"
-            defaultValue=""
-            ref={genderRef}
-          >
+          <select className="px-3" name="gender" defaultValue="">
             <option value="" disabled hidden>
               Select gender
             </option>
@@ -59,7 +50,7 @@ export default function Shop(props: shopProps) {
               </option>
             ))}
           </select>
-          <select className="px-3" name="style" defaultValue="" ref={styleRef}>
+          <select className="px-3" name="style" defaultValue="">
             <option value="" disabled hidden>
               Select style
             </option>
@@ -69,7 +60,7 @@ export default function Shop(props: shopProps) {
               </option>
             ))}
           </select>
-          <select className="px-3" name="type" defaultValue="" ref={typeRef}>
+          <select className="px-3" name="type" defaultValue="">
             <option value="" disabled hidden>
               Select type
             </option>
@@ -86,15 +77,8 @@ export default function Shop(props: shopProps) {
               <i aria-hidden className="fa fa-check"></i>
             </button>
             <button
-              type="button"
+              type="reset"
               className="bg-gray-300 hover:bg-gray-500 hover:text-slate-100"
-              onClick={() => {
-                if (genderRef.current && styleRef.current && typeRef.current) {
-                  genderRef.current.value = "";
-                  styleRef.current.value = "";
-                  typeRef.current.value = "";
-                }
-              }}
             >
               <span className="md:max-lg:hidden">Clear All </span>{" "}
               <i aria-hidden className="fa-solid fa-filter-circle-xmark"></i>

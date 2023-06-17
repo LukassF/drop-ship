@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         suppressHydrationWarning={true}
-        className={`${inter.className} bg-slate-100 text-slate-900`}
+        className={`${inter.className} bg-transparent text-slate-900 overflow-x-hidden`}
       >
         {children}
         <script
