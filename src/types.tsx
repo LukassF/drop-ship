@@ -2,7 +2,7 @@ import { Product } from "@prisma/client";
 
 export type shopProps = {
   products: Product[];
-  addToCart: (id: number) => void;
+  toggleCart: (id: number, isTrue: boolean) => void;
 };
 
 // export type cardProps = {
@@ -14,13 +14,10 @@ export type shopProps = {
 //   inBasket: boolean | null;
 //   addToCart: (id: number) => void;
 // };
-type cardPropsRemaining = {
-  inBasket: boolean | null;
-  addToCart: (id: number) => void;
-};
 
-export type cardProps = Omit<cartItemProps, "gender" | "style" | "type"> &
-  cardPropsRemaining;
+export type cardProps = Omit<cartItemProps, "gender" | "style" | "type"> & {
+  inBasket: boolean | null;
+};
 
 export type cartItemProps = {
   id: number;
@@ -31,6 +28,7 @@ export type cartItemProps = {
   gender: string;
   style: string;
   type: string;
+  toggleCart: (id: number, isTrue: boolean) => void;
 };
 
 export type categoriesType = {

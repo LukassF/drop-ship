@@ -31,6 +31,20 @@ module.exports = {
       screens: {
         xs: "450px",
       },
+      keyframes: {
+        bop: {
+          "0%, 100%": { transform: "rotate(-5deg)" },
+          "50%": { transform: "rotate(5deg)" },
+        },
+        flicker: {
+          "0%, 100%": { opacity: "0" },
+          "50%": { opacity: "1" },
+        },
+      },
+      animation: {
+        bop: "bop 3s linear infinite",
+        flicker: "flicker 6s linear infinite",
+      },
     },
   },
   plugins: [],

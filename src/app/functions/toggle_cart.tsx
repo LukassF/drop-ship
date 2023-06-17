@@ -1,12 +1,12 @@
 import { prisma } from "@/db";
 
-export async function addToCart(property: number) {
+export async function toggleCart(property: number, isTrue: boolean) {
   "use server";
 
   await prisma.product.update({
     where: { id: property },
     data: {
-      inBasket: true,
+      inBasket: isTrue,
     },
   });
 }

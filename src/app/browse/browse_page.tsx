@@ -158,7 +158,7 @@ export default function Shop(props: shopProps) {
                   image={product.image}
                   isTrending={product.isTrending}
                   inBasket={product.inBasket}
-                  addToCart={props.addToCart}
+                  toggleCart={props.toggleCart}
                 />
               );
           })}

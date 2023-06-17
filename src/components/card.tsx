@@ -17,7 +17,8 @@ export default function Card(props: cardProps) {
             //addToCart function passed as a prop from grandparent to run on a server
 
             onClick={() => {
-              props.addToCart(props.id);
+              props.toggleCart(props.id, true);
+              // window.location.reload();
             }}
             className="w-12 h-12 rounded-2xl bg-blue-500  opacity-60 hover:opacity-90 transition-all duration-300"
           >

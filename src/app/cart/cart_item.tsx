@@ -48,7 +48,16 @@ export default function CartItem(props: cartItemProps) {
           </span>
         </div>
         <div className="flex flex-col flex-1 justify-end xl:justify-center items-start xl:items-center p-5 xl:bg-gradient-to-r from-stone-300 to-stone-400">
-          <button className="absolute top-2 right-2 md:top-5 md:right-5 w-6 h-6 text-sm md:text-xl text-stone-600 hover:text-stone-900">
+          <button
+            //removing item from cart
+            onClick={() => {
+              props.toggleCart(props.id, false);
+              setTimeout(() => {
+                window.location.reload();
+              }, 500);
+            }}
+            className="absolute top-2 right-2 md:top-5 md:right-5 w-6 h-6 text-sm md:text-xl text-stone-600 hover:text-stone-900"
+          >
             <i aria-hidden className="fa fa-close"></i>
           </button>
           <div className="flex flex-col w-1/2 items-center gap-2">
