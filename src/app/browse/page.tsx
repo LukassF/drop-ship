@@ -1,5 +1,5 @@
 import Navbar from "../../components/navbar";
-import Shop from "../../components/browse_page";
+import Shop from "./browse_page";
 import { prisma } from "@/db";
 import { Product, PrismaClient } from "@prisma/client";
 import getProduct from "../functions/get_products";

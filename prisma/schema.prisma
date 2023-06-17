@@ -11,11 +11,13 @@ datasource db {
 }
 
 model Product {
-  id         Int      @id @default(autoincrement())
+  id         Int     @id @default(autoincrement())
   name       String
   price      Float
-  category   String
+  gender     String
+  style      String
+  type       String
   isTrending Boolean
   image      String
-  inBasket   Boolean?
+  inBasket   Boolean
 }

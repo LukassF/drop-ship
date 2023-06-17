@@ -1,7 +1,7 @@
 "use client";
 
-import Card from "./card";
-import Footer from "./footer";
+import Card from "../../components/card";
+import Footer from "../../components/footer";
 import { createRef, useEffect, useRef, useState } from "react";
 import applyFilters from "@/app/functions/apply_filters";
 import { categoriesType, shopProps } from "@/types";
@@ -39,7 +39,7 @@ export default function Shop(props: shopProps) {
 
   return (
     <main className="w-screen h-screen mx-0 px-0 overflow-x-hidden bg-slate-100">
-      <header className="w-screen mt-20 md:mt-12 h-96 bg-cover bg-center bg-transparent md:bg-[url('https://wallpaperaccess.com/full/6836716.png')] flex items-end">
+      <header className="w-screen mt-20 md:mt-12 h-80 md:h-60 bg-cover bg-center bg-transparent md:bg-[url('https://wallpaperaccess.com/full/6836716.png')] flex items-end relative">
         <form
           action={(data) => applyFilters(data, setCategories)}
           className="px-2 pr-5 w-full h-16 hidden md:flex gap-2 -mt-2 text-lg [&>*]:h-3/4 [&>*]:rounded-xl [&>*]:flex-1   [&>*]:text-center [&>*]:text-stone-900 [&>*]:appearance-none"
@@ -102,43 +102,43 @@ export default function Shop(props: shopProps) {
           </div>
         </form>
 
-        <form className="w-full h-full p-5  flex md:hidden flex-col items-center justify-center gap-3 xs:gap-4">
+        <form className="w-full h-full p-5  flex md:hidden flex-col items-center justify-center">
           <h1 className="text-xl">Apply filters</h1>
           <hr className="h-px w-full bg-stone-900"></hr>
-          <div className="w-full flex gap-x-4">
+          <div className="w-full flex gap-x-4 py-4">
             {genderArray.map((gender) => (
               <div
                 key={gender}
                 onClick={(e) =>
                   chooseCategory(e.target, setCategories, "gender")
                 }
-                className="cursor-pointer hover:bg-amber-200 px-5 py-2 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
+                className="cursor-pointer hover:bg-amber-200 px-5 py-3 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
               >
                 {gender}
               </div>
             ))}
           </div>
           <hr className="h-px w-full bg-stone-900"></hr>
-          <div className="w-full flex gap-x-4 gap-y-2 flex-wrap">
+          <div className="w-full flex gap-x-4 gap-y-2 overflow-x-auto py-4">
             {clothesStyles.map((style) => (
               <div
                 key={style}
                 onClick={(e) =>
                   chooseCategory(e.target, setCategories, "style")
                 }
-                className="cursor-pointer hover:bg-amber-200 px-5 py-2 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
+                className="shrink-0 cursor-pointer hover:bg-amber-200 px-5 py-3 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
               >
                 {style}
               </div>
             ))}
           </div>
           <hr className="h-px w-full bg-stone-900"></hr>
-          <div className="w-full flex gap-x-4 gap-y-2 flex-wrap">
+          <div className="w-full flex gap-x-4 gap-y-2 overflow-x-auto py-4">
             {clothesTypes.map((type) => (
               <div
                 key={type}
                 onClick={(e) => chooseCategory(e.target, setCategories, "type")}
-                className="cursor-pointer hover:bg-amber-200 px-5 py-2 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
+                className="shrink-0 cursor-pointer hover:bg-amber-200 px-5 py-3 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
               >
                 {type}
               </div>
@@ -159,18 +159,25 @@ export default function Shop(props: shopProps) {
         </span>
 
         <article className="w-full h-auto my-5 px-0 sm:p-4  flex justify-center flex-wrap gap-0 sm:gap-20 pb-0 sm:pb-20">
-          {props.products.map((product) => (
-            <Card
-              key={product.id}
-              id={product.id}
-              name={product.name}
-              price={product.price}
-              image={product.image}
-              isTrending={product.isTrending}
-              inBasket={product.inBasket}
-              addToCart={props.addToCart}
-            />
-          ))}
+          {props.products.map((product) => {
+            if (
+              product.gender.includes(categories.gender) &&
+              product.style.includes(categories.style) &&
+              product.type.includes(categories.type)
+            )
+              return (
+                <Card
+                  key={product.id}
+                  id={product.id}
+                  name={product.name}
+                  price={product.price}
+                  image={product.image}
+                  isTrending={product.isTrending}
+                  inBasket={product.inBasket}
+                  addToCart={props.addToCart}
+                />
+              );
+          })}
           <span className="w-full text-10px m-5 py-4 text-stone-400 md:px-20 border-t-4 border-b-4 border-stone-400 md:hidden">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem
             deleniti laudantium consectetur! Eos facilis omnis, officia illo

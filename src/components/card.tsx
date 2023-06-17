@@ -25,15 +25,12 @@ export default function Card(props: cardProps) {
             <i aria-hidden className={`fa fa-shopping-cart text-slate-50`}></i>
           </button>
           {props.isTrending && (
-            <Link
-              href="/trending"
-              className="w-12 h-12 rounded-2xl bg-green-300  opacity-60 hover:opacity-90 transition-all duration-300 flex items-center justify-center"
-            >
+            <div className="w-12 h-12 rounded-2xl bg-green-300  opacity-60 hover:opacity-90 transition-all duration-300 flex items-center justify-center">
               <i
                 aria-hidden
                 className="fa fa-arrow-trend-up text-slate-50 text-xl"
               ></i>
-            </Link>
+            </div>
           )}
         </header>
         <footer className="p-4 flex flex-col gap-4 z-20 transfrom translate-y-full group-focus:translate-y-0 group-hover:translate-y-0 transition-all duration-500">
