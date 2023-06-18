@@ -35,7 +35,7 @@ export default function Shop(props: shopProps) {
 
   return (
     <main className="w-screen h-screen mx-0 px-0 overflow-x-hidden bg-slate-100">
-      <header className="w-screen mt-20 md:mt-12 h-80 md:h-60 bg-cover bg-center bg-transparent md:bg-[url('https://wallpaperaccess.com/full/6836716.png')] flex items-end relative">
+      <header className="w-screen min-h-80 md:h-96 bg-cover bg-center bg-transparent md:bg-[url('https://wallpaper.dog/large/17272969.jpg')] flex items-end relative">
         <form
           action={(data) => applyFilters(data, setCategories)}
           className="px-2 pr-5 w-full h-16 hidden md:flex gap-2 -mt-2 text-lg [&>*]:h-3/4 [&>*]:rounded-xl [&>*]:flex-1   [&>*]:text-center [&>*]:text-stone-900 [&>*]:appearance-none"
@@ -86,43 +86,43 @@ export default function Shop(props: shopProps) {
           </div>
         </form>
 
-        <form className="w-full h-full p-5  flex md:hidden flex-col items-center justify-center">
+        <form className="w-full h-full p-5  flex md:hidden flex-col items-center justify-center pt-20">
           <h1 className="text-xl">Apply filters</h1>
           <hr className="h-px w-full bg-stone-900"></hr>
-          <div className="w-full flex gap-x-4 py-4">
+          <div className="w-full flex gap-x-4 py-6">
             {genderArray.map((gender) => (
               <div
                 key={gender}
                 onClick={(e) =>
                   chooseCategory(e.target, setCategories, "gender")
                 }
-                className="cursor-pointer hover:bg-amber-200 px-5 py-3 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
+                className="cursor-pointer hover:bg-amber-200 px-5 h-10 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
               >
                 {gender}
               </div>
             ))}
           </div>
           <hr className="h-px w-full bg-stone-900"></hr>
-          <div className="w-full flex gap-x-4 gap-y-2 overflow-x-auto py-4">
+          <div className="w-full flex gap-x-4 gap-y-2 overflow-x-auto py-6 overflow-y-hidden">
             {clothesStyles.map((style) => (
               <div
                 key={style}
                 onClick={(e) =>
                   chooseCategory(e.target, setCategories, "style")
                 }
-                className="shrink-0 cursor-pointer hover:bg-amber-200 px-5 py-3 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
+                className="shrink-0 cursor-pointer h-10 hover:bg-amber-200 px-5 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
               >
                 {style}
               </div>
             ))}
           </div>
           <hr className="h-px w-full bg-stone-900"></hr>
-          <div className="w-full flex gap-x-4 gap-y-2 overflow-x-auto py-4">
+          <div className="w-full flex gap-x-4 gap-y-2 overflow-x-auto py-6 overflow-y-hidden">
             {clothesTypes.map((type) => (
               <div
                 key={type}
                 onClick={(e) => chooseCategory(e.target, setCategories, "type")}
-                className="shrink-0 cursor-pointer hover:bg-amber-200 px-5 py-3 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
+                className="shrink-0 cursor-pointer h-10 hover:bg-amber-200 px-5 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
               >
                 {type}
               </div>

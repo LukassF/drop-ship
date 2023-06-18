@@ -20,6 +20,7 @@ export default function RootLayout({
         className={`${inter.className} bg-transparent text-slate-900 overflow-x-hidden`}
       >
         {children}
+
         <script
           src="https://kit.fontawesome.com/f83777b1f5.js"
           crossOrigin="anonymous"

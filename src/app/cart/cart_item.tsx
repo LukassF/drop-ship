@@ -2,13 +2,17 @@
 
 import { sizes } from "@/components/card";
 import { cartItemProps } from "@/types";
-import { useState } from "react";
+import { createRef, useState } from "react";
 
 export default function CartItem(props: cartItemProps) {
   const [quantity, setQuantity] = useState<number>(1);
+  const itemRef = createRef<HTMLElement>();
 
   return (
-    <article className="w-full h-40 md:h-300px bg-stone-700 bg-opacity-10 rounded-xl flex overflow-hidden relative">
+    <article
+      className="w-full h-40 md:h-300px bg-stone-700 bg-opacity-10 rounded-xl flex overflow-hidden relative"
+      ref={itemRef}
+    >
       <div
         className="w-1/3 md:max-xl:w-1/2  h-full bg-center bg-cover"
         style={{ backgroundImage: `url(${props.image})` }}
@@ -52,9 +56,10 @@ export default function CartItem(props: cartItemProps) {
             //removing item from cart
             onClick={() => {
               props.toggleCart(props.id, false);
-              setTimeout(() => {
-                window.location.reload();
-              }, 500);
+              itemRef.current?.classList.add("hidden");
+              // setTimeout(() => {
+              //   window.location.reload();
+              // }, 300);
             }}
             className="absolute top-2 right-2 md:top-5 md:right-5 w-6 h-6 text-sm md:text-xl text-stone-600 hover:text-stone-900"
           >

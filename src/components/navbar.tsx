@@ -12,7 +12,7 @@ export default function Navbar({ page }: navbarProps) {
     { id: 4, href: "/trending", icon: "arrow-trend-up", title: "Trending" },
   ];
   return (
-    <nav className="flex justify-between items-center px-5 md:px-10 py-2 fixed w-full z-50 text-slate-100 bg-stone-800">
+    <nav className="flex justify-between items-center px-5 md:px-10 py-2 fixed w-full z-50 text-slate-100 bg-stone-900">
       <h1 className="text-xl">
         <Link href="/">Drop&Ship</Link>
       </h1>

@@ -33,17 +33,22 @@ module.exports = {
       },
       keyframes: {
         bop: {
+          "0%, 100%": { transform: "rotate(0deg)" },
+          "50%": { transform: "rotate(20deg)" },
+        },
+        sway: {
           "0%, 100%": { transform: "rotate(-5deg)" },
           "50%": { transform: "rotate(5deg)" },
         },
-        flicker: {
-          "0%, 100%": { opacity: "0" },
-          "50%": { opacity: "1" },
+        wave: {
+          "0%, 100%": { transform: "rotate(0deg)" },
+          "50%": { transform: "rotate(10deg)" },
         },
       },
       animation: {
         bop: "bop 3s linear infinite",
-        flicker: "flicker 6s linear infinite",
+        sway: "sway 3s ease-in-out infinite",
+        wave: "wave 4s linear infinite",
       },
     },
   },
