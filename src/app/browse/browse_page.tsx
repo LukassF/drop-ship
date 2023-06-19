@@ -16,7 +16,7 @@ const clothesStyles = [
   "Underwear",
   "Other",
 ];
-const clothesTypes = ["Headwear", "Top", "Bottom", "Handwear", "Shoes"];
+const clothesTypes = ["Headwear", "Top", "Bottom", "Full", "Handwear", "Shoes"];
 
 export default function Shop(props: shopProps) {
   const [categories, setCategories] = useState<categoriesType>({

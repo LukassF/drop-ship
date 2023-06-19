@@ -1,10 +1,17 @@
+import { prisma } from "@/db";
 import Link from "next/link";
 
 type navbarProps = {
   page: number;
 };
 
-export default function Navbar({ page }: navbarProps) {
+export default async function Navbar({ page }: navbarProps) {
+  const cartItems = await prisma.product.findMany({
+    where: {
+      inBasket: true,
+    },
+  });
+  console.log(cartItems.length);
   const linkList = [
     { id: 1, href: "/browse", icon: "magnifying-glass", title: "Browse" },
     { id: 2, href: "/cart", icon: "shopping-basket", title: "Cart" },
@@ -12,7 +19,7 @@ export default function Navbar({ page }: navbarProps) {
     { id: 4, href: "/trending", icon: "arrow-trend-up", title: "Trending" },
   ];
   return (
-    <nav className="flex justify-between items-center px-5 md:px-10 py-2 fixed w-full z-50 text-slate-100 bg-stone-900">
+    <nav className="flex justify-between items-center px-5 md:px-10 py-2 fixed w-full z-50 text-slate-100 bg-stone-900 bg-opacity-60 backdrop-blur">
       <h1 className="text-xl">
         <Link href="/">Drop&Ship</Link>
       </h1>
@@ -25,6 +32,8 @@ export default function Navbar({ page }: navbarProps) {
               link.id === page
               // ? "shadow-md shadow-white hover:shadow-md hover:shadow-white"
               // : ""
+            } ${
+              link.title === "Cart" && cartItems.length > 0 && "bg-stone-100"
             }`}
           >
             <i aria-hidden className={`fa fa-${link.icon}`}></i>

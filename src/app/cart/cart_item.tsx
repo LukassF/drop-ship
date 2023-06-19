@@ -10,11 +10,11 @@ export default function CartItem(props: cartItemProps) {
 
   return (
     <article
-      className="w-full h-40 md:h-300px bg-stone-700 bg-opacity-10 rounded-xl flex overflow-hidden relative"
+      className="w-full h-40 md:h-auto lg:h-300px rounded-xl flex overflow-hidden relative border border-stone-500"
       ref={itemRef}
     >
       <div
-        className="w-1/3 md:max-xl:w-1/2  h-full bg-center bg-cover"
+        className="w-1/3 md:max-xl:w-1/2  min-h-40 bg-center bg-cover"
         style={{ backgroundImage: `url(${props.image})` }}
       ></div>
       <div className="w-2/3 flex flex-col xl:flex-row">
@@ -24,9 +24,9 @@ export default function CartItem(props: cartItemProps) {
           </span>
           <span className="text-slate-700 flex flex-col gap-2 sm:flex-row sm:gap-0 justify-between w-full">
             <span className="text-xs md:text-lg ">
-              {props.gender} / {props.style} / {props.type}
+              {props.gender.split("/")[0]} / {props.style} / {props.type}
             </span>
-            <select className="text-sm h-5 rounded appearance-none text-center block md:hidden w-full sm:w-20">
+            <select className="text-sm h-5 rounded bg-stone-300 appearance-none text-center block md:hidden w-full sm:w-20">
               {sizes.map((size) => (
                 <option value={size} key={size} className="text-xs">
                   {size}
@@ -34,7 +34,7 @@ export default function CartItem(props: cartItemProps) {
               ))}
             </select>
           </span>
-          <p className="hidden md:block text-10px xl:text-xs text-slate-500 py-2">
+          <p className="hidden lg:block text-10px xl:text-xs text-slate-500 py-2">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt
             praesentium explicabo hic! Itaque, odio? Ex laborum explicabo odio
             repudiandae atque vel accusamus, dolore quidem ullam, exercitationem
@@ -51,7 +51,7 @@ export default function CartItem(props: cartItemProps) {
             ))}
           </span>
         </div>
-        <div className="flex flex-col flex-1 justify-end xl:justify-center items-start xl:items-center p-5 xl:bg-gradient-to-r from-stone-300 to-stone-400">
+        <div className="flex flex-col flex-1 justify-end xl:justify-center items-start xl:items-center p-5 ">
           <button
             //removing item from cart
             onClick={() => {
@@ -66,30 +66,30 @@ export default function CartItem(props: cartItemProps) {
             <i aria-hidden className="fa fa-close"></i>
           </button>
           <div className="flex flex-col w-1/2 items-center gap-2">
-            <label className="hidden xl:block text-slate-900 xl:text-slate-100 text-xl">
+            <label className="hidden xl:block text-slate-900 text-xl">
               Quantity
             </label>
-            <span className="flex scale-90 md:scale-100 -mt-6 sm:-mt-0">
+            <span className="flex scale-90 md:scale-100 -mt-6 sm:-mt-0 gap-2">
               <button
-                className="w-10 h-10 bg-stone-400 text-xl rounded-xl"
+                className="w-8 h-8 bg-stone-300 text-xl rounded-md"
                 onClick={() =>
                   setQuantity((prev) => (prev >= 2 ? prev - 1 : prev))
                 }
               >
                 -
               </button>
-              <div className="w-10 h-10 text-center px-2 py-1 text-2xl">
+              <div className="w-8 h-8 px-2 py-1 text-2xl flex items-center justify-center">
                 {quantity}
               </div>
               <button
-                className="w-10 h-10 bg-stone-200 text-xl rounded-xl"
+                className="w-8 h-8 bg-stone-300 text-xl rounded-md"
                 onClick={() => setQuantity((prev) => prev + 1)}
               >
                 +
               </button>
             </span>
           </div>
-          <span className="absolute bottom-5 right-5 text-sm md:text-xl text-slate-900 xl:text-slate-100">
+          <span className="absolute bottom-5 right-5 text-sm md:text-xl text-slate-700">
             {(props.price * quantity).toFixed(2)}$
           </span>
         </div>
