@@ -26,8 +26,8 @@ export default function HomePage() {
         <article className="z-2 group-hover:scale-110 w-full h-full bg-cover bg-center bg-[url('https://cdn.shopify.com/s/files/1/0117/2006/5081/articles/9.jpg?v=1528970012')] transition-all duration-500"></article>
         <div className="z-20 absolute top-1/2 left-1/2 transfrom -translate-y-1/2 -translate-x-1/2 text-slate-100 w-full md:w-1/2 px-8 flex flex-col gap-5 items-center">
           <h1 className="text-3xl xl:text-6xl">
-            Get up to <span className="text-green-400">20%</span> on women's
-            semi-formal!
+            Get up to <span className="text-green-400">20%</span> on
+            women&apos;s semi-formal!
           </h1>
           <span className="break-all text-xs md:text-lg">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
@@ -44,9 +44,9 @@ export default function HomePage() {
 
         <div className="absolute top-1/2 left-1/2 xl:top-2/3 lg:left-20 transfrom -translate-y-1/2 -translate-x-1/2 lg:-translate-x-0 text-slate-100 w-full md:w-1/2 px-8 flex flex-col gap-5 items-center z-20">
           <h1 className="text-3xl xl:text-6xl">
-            Men's formal clothes, up to
-            <span className="text-green-400"> 15%</span> cheaper, don't wait any
-            longer!
+            Men&apos;s formal clothes, up to
+            <span className="text-green-400"> 15%</span> cheaper, don&apos;t
+            wait any longer!
           </h1>
           <span className="break-all text-xs md:text-lg">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
