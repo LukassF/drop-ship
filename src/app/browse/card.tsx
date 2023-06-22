@@ -1,10 +1,12 @@
 "use client";
 
 import { cardProps } from "@/types";
+import { useRouter } from "next/navigation";
 
 export const sizes = ["XXS", "XS", "S", "M", "L", "XL", "XXL"];
 
 export default function Card(props: cardProps) {
+  const { replace } = useRouter();
   return (
     <div
       tabIndex={0}
@@ -16,9 +18,10 @@ export default function Card(props: cardProps) {
           <button
             //addToCart function passed as a prop from grandparent to run on a server
 
-            onClick={() => {
-              props.toggleCart(props.id, true);
-              // window.location.reload();
+            onClick={async () => {
+              await props.toggleCart(props.id, true);
+              window.location.reload();
+              // replace("/browse");
             }}
             className="w-12 h-12 rounded-2xl bg-blue-500  opacity-60 hover:opacity-90 transition-all duration-300"
           >

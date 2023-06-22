@@ -1,12 +1,24 @@
-export default function About({ message }: aboutProps) {
-  console.log(message);
-  return <h1>{message}</h1>;
-}
+"use client";
+// import { fetchContent } from "@/data/features/counter";
+// // import { increment, decrement } from "@/data/features/counter";
+// import { AppDispatch, useAppSelector } from "@/data/redux_store";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
-export async function getServerSideProps() {
-  return { props: { message: "Hi hello and welcome" } };
-}
+export default function About() {
+  // const dispatch = useDispatch<AppDispatch>();
 
-type aboutProps = {
-  message: string;
-};
+  // useEffect(() => {
+  //   dispatch(fetchContent());
+  // }, [dispatch]);
+  // const content = useAppSelector((state) => state.contentReducer.content);
+  // return (
+  //   <>
+  //     {/* <button onClick={() => dispatch(increment(counter))}>+</button> */}
+  //     <div>{(content as any).brand}</div>
+  //     {/* <button onClick={() => dispatch(decrement(counter))}>-</button> */}
+  //   </>
+  // );
+  return <h1>About</h1>;
+}

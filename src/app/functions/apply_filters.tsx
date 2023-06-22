@@ -1,4 +1,5 @@
 import { categoriesType } from "@/types";
+import { redirect } from "next/navigation";
 
 export default async function applyFilters(
   data: FormData,
@@ -12,19 +13,6 @@ export default async function applyFilters(
   if (typeof gender !== "string") gender = "";
   if (typeof style !== "string") style = "";
   if (typeof type !== "string") type = "";
-
-  // let filters = [gender, style, type];
-  // let filteredFilters: string[] = [];
-
-  // filters.forEach((filter, i) => {
-  //   if (typeof filter === "string" && (filter as string).length !== 0 && filter)
-  //     filteredFilters.push(filter);
-  // });
-
-  // console.log(filteredFilters);
-  // if (filteredFilters.length === 0) return;
-
-  // setCategories([...filteredFilters]);
 
   setCategories({
     gender: gender as string,

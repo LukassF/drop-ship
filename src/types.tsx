@@ -31,3 +31,7 @@ export type name = {
   name: string;
   surname: string;
 };
+
+export type navbarProps = {
+  page: number;
+};

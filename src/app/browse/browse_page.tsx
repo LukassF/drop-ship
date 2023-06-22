@@ -1,8 +1,8 @@
 "use client";
 
-import Card from "../../components/card";
+import Card from "./card";
 import Footer from "../../components/footer";
-import { createRef, useEffect, useRef, useState } from "react";
+import { createRef, useEffect, useState } from "react";
 import applyFilters from "@/app/functions/apply_filters";
 import { categoriesType, shopProps } from "@/types";
 import chooseCategory from "@/app/functions/chooseCategory";

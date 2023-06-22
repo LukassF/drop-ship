@@ -1,9 +1,7 @@
 import { prisma } from "@/db";
+import { navbarProps } from "@/types";
+import { Product } from "@prisma/client";
 import Link from "next/link";
-
-type navbarProps = {
-  page: number;
-};
 
 export default async function Navbar({ page }: navbarProps) {
   const cartItems = await prisma.product.findMany({
@@ -11,7 +9,6 @@ export default async function Navbar({ page }: navbarProps) {
       inBasket: true,
     },
   });
-  console.log(cartItems.length);
   const linkList = [
     { id: 1, href: "/browse", icon: "magnifying-glass", title: "Browse" },
     { id: 2, href: "/cart", icon: "shopping-basket", title: "Cart" },
@@ -19,7 +16,7 @@ export default async function Navbar({ page }: navbarProps) {
     { id: 4, href: "/trending", icon: "arrow-trend-up", title: "Trending" },
   ];
   return (
-    <nav className="flex justify-between items-center px-5 md:px-10 py-2 fixed w-full z-50 text-slate-100 bg-stone-900 bg-opacity-60 backdrop-blur">
+    <nav className="flex justify-between items-center px-5 md:px-10 py-2 fixed w-full z-50 text-slate-100 bg-stone-900 bg-opacity-90 backdrop-blur">
       <h1 className="text-xl">
         <Link href="/">Drop&Ship</Link>
       </h1>
@@ -28,12 +25,14 @@ export default async function Navbar({ page }: navbarProps) {
           <Link
             key={link.id}
             href={link.href}
-            className={`flex gap-2 items-center p-3 sm:px-4 sm:py-2 rounded-3xl hover:shadow-md hover:bg-neutral-900 hover:bg-opacity-5 transition-all ${
+            className={`relative flex gap-2 items-center p-3 sm:px-4 sm:py-2 after:w-3 after:h-3 after:bg-rose-500 after:absolute after:opacity-0 after:right-0 after:rounded-full after:top-2 rounded-3xl hover:shadow-md hover:bg-neutral-900 hover:bg-opacity-5 transition-all ${
               link.id === page
               // ? "shadow-md shadow-white hover:shadow-md hover:shadow-white"
               // : ""
             } ${
-              link.title === "Cart" && cartItems.length > 0 && "bg-stone-100"
+              link.title === "Cart" &&
+              cartItems.length > 0 &&
+              "after:opacity-100"
             }`}
           >
             <i aria-hidden className={`fa fa-${link.icon}`}></i>

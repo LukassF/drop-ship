@@ -25,7 +25,8 @@ export default function Aside() {
   const [date, setDate] = useState<Date>(new Date());
   const [cvv, setCvv] = useState<number>(111);
 
-  window.onscroll = (e) => stick(containerRef);
+  if (typeof window !== "undefined")
+    window.onscroll = () => stick(containerRef);
 
   return (
     <aside
@@ -62,7 +63,7 @@ export default function Aside() {
           unintentionally leaked.
         </h2>
       </div>
-      <section className="w-full flex flex-col gap-0 sm:gap-4 lg:gap-6  items-center [perspective:1000px] mt-2 lg:mt-10">
+      <section className="w-full flex flex-col gap-0 sm:gap-4 lg:gap-6  items-center [perspective:2000px] mt-2 lg:mt-10">
         <article
           id="credit-card"
           ref={creditCardRef}

@@ -4,9 +4,8 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { toggleCart } from "../functions/toggle_cart";
 import Link from "next/link";
-import { GetServerSideProps } from "next";
-import { Product } from "@prisma/client";
 import Aside from "./aside";
+import { redirect } from "next/navigation";
 
 export default async function Cart() {
   const products = await prisma.product.findMany({
@@ -15,9 +14,6 @@ export default async function Cart() {
     },
   });
 
-  // setTimeout(() => {
-  //   window.location.reload();
-  // }, 100);
   return (
     <>
       <Navbar page={2} />

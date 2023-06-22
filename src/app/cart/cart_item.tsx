@@ -1,12 +1,19 @@
 "use client";
 
-import { sizes } from "@/components/card";
+import { sizes } from "@/app/browse/card";
 import { cartItemProps } from "@/types";
-import { createRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { createRef, useState, useEffect } from "react";
 
 export default function CartItem(props: cartItemProps) {
+  const { push } = useRouter();
+  // const [shouldUpdate, setShouldUpdate] = useState<boolean>(false);
   const [quantity, setQuantity] = useState<number>(1);
   const itemRef = createRef<HTMLElement>();
+
+  // useEffect(() => {
+  //   if (shouldUpdate) push("/cart");
+  // }, [shouldUpdate]);
 
   return (
     <article
@@ -44,7 +51,7 @@ export default function CartItem(props: cartItemProps) {
             {sizes.map((size) => (
               <button
                 key={Math.random()}
-                className="opacity-70 w-8 h-8 bg-stone-900 rounded-3xl text-slate-100 text-xs hover:bg-stone-200 hover:opacity-100 hover:text-stone-900 transition-all duration-300"
+                className="opacity-70 w-8 h-8 bg-stone-900 rounded-3xl text-slate-100 text-xs hover:bg-stone-200 hover:opacity-100 hover:text-stone-900 md:scale-80s lg:scale-100 transition-all duration-300"
               >
                 {size}
               </button>
@@ -54,12 +61,10 @@ export default function CartItem(props: cartItemProps) {
         <div className="flex flex-col flex-1 justify-end xl:justify-center items-start xl:items-center p-5 ">
           <button
             //removing item from cart
-            onClick={() => {
-              props.toggleCart(props.id, false);
-              itemRef.current?.classList.add("hidden");
-              // setTimeout(() => {
-              //   window.location.reload();
-              // }, 300);
+            onClick={async () => {
+              await props.toggleCart(props.id, false);
+              window.location.reload();
+              // itemRef.current?.classList.add("hidden");
             }}
             className="absolute top-2 right-2 md:top-5 md:right-5 w-6 h-6 text-sm md:text-xl text-stone-600 hover:text-stone-900"
           >
