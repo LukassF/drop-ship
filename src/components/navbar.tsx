@@ -15,7 +15,7 @@ export default async function Navbar({ page }: navbarProps) {
     { id: 3, href: "/about", icon: "people-group", title: "About" },
   ];
   return (
-    <nav className="flex justify-between items-center px-5 md:px-10 py-2 fixed w-full z-50 text-slate-100 bg-stone-900 bg-opacity-90 backdrop-blur">
+    <nav className="flex justify-between items-center px-5 md:px-10 py-2 fixed w-full z-50 text-slate-100 bg-stone-900 md:bg-opacity-60 backdrop-blur">
       <h1 className="text-xl">
         <Link href="/">Drop&Ship</Link>
       </h1>
