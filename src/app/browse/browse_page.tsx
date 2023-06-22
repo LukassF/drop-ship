@@ -2,7 +2,7 @@
 
 import Card from "./card";
 import Footer from "../../components/footer";
-import { createRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import applyFilters from "@/app/functions/apply_filters";
 import { categoriesType, shopProps } from "@/types";
 import chooseCategory from "@/app/functions/chooseCategory";

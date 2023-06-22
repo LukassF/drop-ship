@@ -1,6 +1,5 @@
 import { prisma } from "@/db";
 import { navbarProps } from "@/types";
-import { Product } from "@prisma/client";
 import Link from "next/link";
 
 export default async function Navbar({ page }: navbarProps) {

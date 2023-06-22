@@ -5,7 +5,6 @@ import Footer from "@/components/footer";
 import { toggleCart } from "../functions/toggle_cart";
 import Link from "next/link";
 import Aside from "./aside";
-import { redirect } from "next/navigation";
 
 export default async function Cart() {
   const products = await prisma?.product?.findMany({
