@@ -1,7 +1,7 @@
 "use client";
 
 import { name } from "@/types";
-import { createRef, useState } from "react";
+import { createRef, useEffect, useState } from "react";
 import { stick } from "../functions/stick";
 
 const slices = [
@@ -24,9 +24,16 @@ export default function Aside() {
   const [cardNumber, setCardNumber] = useState<string>("");
   const [date, setDate] = useState<Date>(new Date());
   const [cvv, setCvv] = useState<number>(111);
+  const [clicked, setClicked] = useState<boolean>(false);
 
   if (typeof window !== "undefined")
     window.onscroll = () => stick(containerRef);
+
+  useEffect(() => {
+    if (containerRef.current?.classList.contains("translate-x-full"))
+      document.documentElement.style.overflow = "auto";
+    else document.documentElement.style.overflow = "hidden";
+  }, [clicked]);
 
   return (
     <aside
@@ -37,6 +44,7 @@ export default function Aside() {
         className="absolute md:hidden w-10 h-10 rounded-xl flex items-center justify-center transform -translate-x-20 bg-stone-400 transition-all text-lg text-slate-100"
         ref={buttonRef}
         onClick={() => {
+          setClicked(!clicked);
           if (buttonRef.current?.classList.contains("-translate-x-20")) {
             containerRef.current?.classList.remove("translate-x-full");
             buttonRef.current?.classList.remove("-translate-x-20");
