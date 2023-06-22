@@ -8,7 +8,7 @@ import Aside from "./aside";
 import { redirect } from "next/navigation";
 
 export default async function Cart() {
-  const products = await prisma.product.findMany({
+  const products = await prisma?.product?.findMany({
     where: {
       inBasket: true,
     },
