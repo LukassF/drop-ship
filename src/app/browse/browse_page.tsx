@@ -142,7 +142,7 @@ export default function Shop(props: shopProps) {
           </h2>
         </span>
 
-        <article className="w-full h-auto my-5 px-0 sm:p-4  flex justify-center flex-wrap gap-0 sm:gap-20 pb-0 sm:pb-20">
+        <article className="w-full h-auto my-5 px-0 sm:p-4  flex justify-center flex-wrap gap-5 sm:gap-20 pb-0 sm:pb-20">
           {props.products.map((product) => {
             if (
               product.gender.includes(categories.gender) &&

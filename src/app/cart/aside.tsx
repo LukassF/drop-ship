@@ -211,7 +211,7 @@ export default function Aside() {
             </div>
           </div>
           <button
-            className="w-16 h-16 md:w-12 md:h-12 rounded-full self-center bg-slate-600 text-slate-100 hover:bg-slate-100 hover:text-slate-900 transition-all"
+            className="w-12 h-12 rounded-full self-center bg-slate-600 text-slate-100 hover:bg-slate-100 hover:text-slate-900 transition-all"
             id="finish-button"
           >
             <i aria-hidden className="fa fa-check"></i>

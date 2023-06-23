@@ -30,8 +30,9 @@ export default function CartItem(props: cartItemProps) {
             {props.name}
           </span>
           <span className="text-slate-700 flex flex-col gap-2 sm:flex-row sm:gap-0 justify-between w-full">
-            <span className="text-xs md:text-lg ">
-              {props.gender.split("/")[0]} / {props.style} / {props.type}
+            <span className="text-10px md:text-lg ">
+              {props.gender.split("/")[0]} / {props.style.split("/")[0]} /{" "}
+              {props.type.split("/")[0]}
             </span>
             <select className="text-sm h-5 rounded bg-stone-300 appearance-none text-center block md:hidden w-full sm:w-20">
               {sizes.map((size) => (
