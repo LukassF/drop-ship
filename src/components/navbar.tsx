@@ -14,7 +14,13 @@ export default async function Navbar({ page }: navbarProps) {
     { id: 3, href: "/about", icon: "people-group", title: "About" },
   ];
   return (
-    <nav className="flex justify-between items-center px-5 md:px-10 py-2 fixed w-full z-50 text-slate-100 bg-stone-900 md:bg-opacity-60 backdrop-blur">
+    <nav
+      className={`flex justify-between items-center px-5 md:px-10 py-2 fixed w-full z-50 text-slate-100 bg-stone-900 ${
+        page === 0
+          ? "bg-opacity-100 xl:bg-opacity-0"
+          : "bg-opacity-100 xl:bg-opacity-70 backdrop-blur"
+      }`}
+    >
       <h1 className="text-xl">
         <Link href="/">Drop&Ship</Link>
       </h1>
@@ -23,7 +29,7 @@ export default async function Navbar({ page }: navbarProps) {
           <Link
             key={link.id}
             href={link.href}
-            className={`relative flex gap-2 items-center p-3 sm:px-4 sm:py-2 after:w-3 after:h-3 after:bg-rose-500 after:absolute after:opacity-0 after:right-0 after:rounded-full after:top-2 rounded-3xl hover:shadow-md hover:bg-neutral-900 hover:bg-opacity-5 transition-all ${
+            className={`relative flex gap-2 items-center p-3 sm:px-4 sm:py-2 after:w-3 after:h-3 after:bg-rose-500 after:absolute after:opacity-0 after:right-0 after:rounded-full after:top-2 rounded-3xl ${
               link.id === page
               // ? "shadow-md shadow-white hover:shadow-md hover:shadow-white"
               // : ""

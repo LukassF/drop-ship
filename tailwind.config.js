@@ -27,6 +27,7 @@ module.exports = {
         "4screen/5": "80vw",
         "5/7": "71.5%",
         "350px": "350px",
+        "450px": "450px",
       },
       fontSize: {
         "10px": "10px",

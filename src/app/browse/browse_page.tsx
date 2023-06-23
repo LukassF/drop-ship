@@ -96,7 +96,7 @@ export default function Shop(props: shopProps) {
                 onClick={(e) =>
                   chooseCategory(e.target, setCategories, "gender")
                 }
-                className="cursor-pointer hover:bg-amber-200 px-5 h-10 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
+                className="cursor-pointer px-5 h-10 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
               >
                 {gender}
               </div>
@@ -110,7 +110,7 @@ export default function Shop(props: shopProps) {
                 onClick={(e) =>
                   chooseCategory(e.target, setCategories, "style")
                 }
-                className="shrink-0 cursor-pointer h-10 hover:bg-amber-200 px-5 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
+                className="shrink-0 cursor-pointer h-10 px-5 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
               >
                 {style}
               </div>
@@ -122,7 +122,7 @@ export default function Shop(props: shopProps) {
               <div
                 key={type}
                 onClick={(e) => chooseCategory(e.target, setCategories, "type")}
-                className="shrink-0 cursor-pointer h-10 hover:bg-amber-200 px-5 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
+                className="shrink-0 cursor-pointer h-10 px-5 rounded-3xl border border-stone-500 bg-amber-100 flex items-center justify-center text-xs xs:text-sm"
               >
                 {type}
               </div>
@@ -142,7 +142,7 @@ export default function Shop(props: shopProps) {
           </h2>
         </span>
 
-        <article className="w-full h-auto my-5 px-0 sm:p-4  flex justify-center flex-wrap gap-5 sm:gap-20 pb-0 sm:pb-20">
+        <article className="w-full h-auto my-5 px-0 sm:p-4  flex justify-center flex-wrap gap-5 sm:gap-8 pb-0 sm:pb-20">
           {props.products.map((product) => {
             if (
               product.gender.includes(categories.gender) &&
@@ -162,7 +162,7 @@ export default function Shop(props: shopProps) {
                 />
               );
           })}
-          <span className="w-full text-10px m-5 py-4 text-stone-400 md:px-20 border-t-4 border-b-4 border-stone-400 md:hidden">
+          <span className="w-full text-10px m-5 py-4 text-stone-400 md:px-20 border-t-2 border-b-2 border-stone-400 md:hidden">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem
             deleniti laudantium consectetur! Eos facilis omnis, officia illo
             sequi recusandae autem suscipit nihil consequuntur illum aperiam,

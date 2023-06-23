@@ -10,7 +10,7 @@ export default function Card(props: cardProps) {
   return (
     <div
       tabIndex={0}
-      className="overflow-hidden relative h-500px w-full sm:w-96  shrink-0 sm:rounded-lg bg-cover bg-center  group "
+      className="overflow-hidden relative h-500px w-full sm:w-450px  shrink-0 sm:rounded-lg bg-cover bg-center  group "
       style={{ backgroundImage: `url(${props.image})` }}
     >
       <div className="absolute w-full h-full bg-stone-900 bg-opacity-40 z-1 flex flex-col justify-between opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-all duration-500">
