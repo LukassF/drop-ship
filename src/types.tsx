@@ -35,3 +35,12 @@ export type name = {
 export type navbarProps = {
   page: number;
 };
+
+export interface DesignerCardProps {
+  id: number;
+  name: string;
+  since: number;
+  designed: number;
+  hierarchy: string;
+  image: string;
+}

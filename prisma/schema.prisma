@@ -21,3 +21,12 @@ model Product {
   image      String
   inBasket   Boolean
 }
+
+model Designer {
+  id               Int     @id @default(autoincrement())
+  name             String
+  since            Int
+  productsDesigned Int
+  hierarchy        String
+  image            String
+}

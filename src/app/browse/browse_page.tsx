@@ -34,7 +34,7 @@ export default function Shop(props: shopProps) {
   }, [categories]);
 
   return (
-    <main className="w-screen h-screen mx-0 px-0 overflow-x-hidden bg-slate-100">
+    <main className="w-screen h-screen mx-0 px-0 overflow-x-hidden bg-stone-100">
       <header className="w-screen min-h-80 md:h-96 bg-cover bg-center bg-transparent md:bg-[url('https://wallpaper.dog/large/17272969.jpg')] flex items-end relative">
         <form
           action={(data) => applyFilters(data, setCategories)}

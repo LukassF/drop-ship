@@ -8,10 +8,11 @@ export default async function Navbar({ page }: navbarProps) {
       inBasket: true,
     },
   });
+  // console.log(cartItems);
   const linkList = [
     { id: 1, href: "/browse", icon: "magnifying-glass", title: "Browse" },
     { id: 2, href: "/cart", icon: "shopping-basket", title: "Cart" },
-    { id: 3, href: "/about", icon: "people-group", title: "About" },
+    { id: 3, href: "/info", icon: "info", title: "Info" },
   ];
   return (
     <nav

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Footer from "./footer";
 
 export default function HomePage() {
@@ -15,13 +16,20 @@ export default function HomePage() {
             debitis ipsam cupiditate doloribus, temporibus accusamus iusto
             aspernatur pariatur quod laboriosam dolorum. Aliquam corporis quo id
           </span>
-          <button className="cursor-pointer w-2/3 rounded-xl border border-slate-100 px-2 py-3 text-lg hover:bg-slate-100 hover:text-slate-800 transition-all">
+          <Link
+            href="/browse"
+            className="cursor-pointer w-2/3 rounded-xl border border-slate-100 px-2 py-3 text-lg hover:bg-slate-100 hover:text-slate-800 transition-all text-center"
+          >
             See more
-          </button>
+          </Link>
         </div>
       </section>
 
       <section className="w-screen h-init-screen/2 xl:h-init-screen overflow-hidden relative snap-center cursor-pointer group">
+        <Link
+          href="/browse"
+          className="z-40 absolute w-full h-full bg-transparent"
+        ></Link>
         <div className="absolute w-full h-full bg-stone-900 bg-opacity-40 z-10"></div>
         <article className="z-2 group-hover:scale-110 w-full h-full bg-cover bg-center bg-[url('https://cdn.shopify.com/s/files/1/0117/2006/5081/articles/9.jpg?v=1528970012')] transition-all duration-500"></article>
         <div className="z-20 absolute top-1/2 left-1/2 transfrom -translate-y-1/2 -translate-x-1/2 text-slate-100 w-full md:w-1/2 px-8 flex flex-col gap-5 items-center">
@@ -39,6 +47,10 @@ export default function HomePage() {
       </section>
 
       <section className="w-screen h-init-screen/2 xl:h-init-screen overflow-hidden relative snap-center cursor-pointer group">
+        <Link
+          href="/browse"
+          className="z-40 absolute w-full h-full bg-transparent"
+        ></Link>
         <div className="absolute w-full h-full bg-stone-900 bg-opacity-40 z-10"></div>
         <article className="z-2 group-hover:scale-110 w-full h-full bg-cover bg-[url('https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Ftimes%2Fprod%2Fweb%2Fbin%2F4107fb06-bcd7-11ed-b386-2854db7a4e6a.jpg?crop=4005%2C2670%2C0%2C516')] transition-all duration-500"></article>
 
