@@ -92,7 +92,7 @@ export default function Aside() {
                 className="-ml-10"
               ></img>
             </div>
-            <div className="text-xl w-full text-starte text-stone-300 flex justify-start gap-6 px-3">
+            <div className="text-xl w-full text-starte text-stone-300 flex justify-between px-3">
               {slices.map((item) => (
                 <span key={Math.random()}>
                   {cardNumber.slice(item[0], item[1]) !== ""
@@ -122,7 +122,7 @@ export default function Aside() {
                 <div className="w-full h-10 flex items-center justify-around">
                   <div className="w-3/4 h-3/4 bg-stone-400"></div>
                   <span>
-                    <em>{cvv.toString().slice(3)}</em>
+                    <em>{cvv}</em>
                   </span>
                 </div>
                 <p className="text-8px text-slate-300 px-3">
@@ -178,10 +178,11 @@ export default function Aside() {
             <label>Your card number</label>
             <input
               type="number"
-              minLength={0}
-              maxLength={16}
               onFocus={() => creditCardRef.current?.classList.remove("rotated")}
-              onChange={(e) => setCardNumber(e.target.value)}
+              onChange={(e) => {
+                e.target.value = e.target.value.slice(0, 16);
+                setCardNumber(e.target.value);
+              }}
             />
           </div>
           <div className="flex w-full [&>*]:flex [&>*]:flex-col gap-5">
@@ -189,10 +190,12 @@ export default function Aside() {
               <label>CVV code</label>
               <input
                 type="number"
-                minLength={0}
                 maxLength={3}
                 onFocus={() => creditCardRef.current?.classList.add("rotated")}
-                onChange={(e) => setCvv(parseInt(e.target.value))}
+                onChange={(e) => {
+                  e.target.value = e.target.value.slice(0, 3);
+                  setCvv(parseInt(e.target.value));
+                }}
               />
             </div>
             <div className="w-2/3">
