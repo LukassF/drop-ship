@@ -5,8 +5,8 @@ export type shopProps = {
 };
 
 export type cardProps = Omit<cartItemProps, "quantity"> & {
-  inBasket: boolean | null;
-} & { Designer: DesignerCardProps | null };
+  Designer: DesignerCardProps | null;
+};
 
 export type cartItemProps = {
   id: number;

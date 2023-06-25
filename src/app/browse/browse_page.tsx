@@ -171,7 +171,6 @@ export default function Shop(props: shopProps) {
                   price={product.price}
                   image={product.image}
                   isTrending={product.isTrending}
-                  inBasket={product.inBasket}
                   Designer={product.Designer}
                   gender={product.gender}
                   style={product.style}
