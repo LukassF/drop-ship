@@ -1,13 +1,13 @@
-import { Product } from "@prisma/client";
+import { Designer, Product } from "@prisma/client";
 
 export type shopProps = {
-  products: Product[];
+  products: (Product & { Designer: Designer | null })[];
   toggleCart: (id: number, isTrue: boolean) => void;
 };
 
 export type cardProps = Omit<cartItemProps, "gender" | "style" | "type"> & {
   inBasket: boolean | null;
-};
+} & { Designer: DesignerCardProps | null };
 
 export type cartItemProps = {
   id: number;
@@ -40,7 +40,7 @@ export interface DesignerCardProps {
   id: number;
   name: string;
   since: number;
-  designed: number;
+  productsDesigned: number;
   hierarchy: string;
   image: string;
 }

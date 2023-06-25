@@ -25,12 +25,24 @@ export default function Shop(props: shopProps) {
     type: "",
   });
   const [categoriesArray, setCategoriesArray] = useState<string[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<number>(3);
 
   useEffect(() => {
+    //creating an array from object values
     setCategoriesArray([]);
     Object.values(categories).forEach((item) => {
       if (item.length !== 0) setCategoriesArray((prev) => [...prev, item]);
     });
+
+    //checking a length of the filtered products
+    setFilteredProducts(
+      props.products.filter(
+        (item) =>
+          item.gender.includes(categories.gender) &&
+          item.style.includes(categories.style) &&
+          item.type.includes(categories.type)
+      ).length
+    );
   }, [categories]);
 
   return (
@@ -38,7 +50,7 @@ export default function Shop(props: shopProps) {
       <header className="w-screen min-h-80 md:h-96 bg-cover bg-center bg-transparent md:bg-[url('https://wallpaper.dog/large/17272969.jpg')] flex items-end relative">
         <form
           action={(data) => applyFilters(data, setCategories)}
-          className="px-2 pr-5 w-full h-16 hidden md:flex gap-2 -mt-2 text-lg [&>*]:h-3/4 [&>*]:rounded-xl [&>*]:flex-1   [&>*]:text-center [&>*]:text-stone-900 [&>*]:appearance-none"
+          className="px-2 pr-5 w-full h-16 hidden md:flex gap-2 -mt-2 text-lg [&>*]:h-3/4 [&>*]:rounded-md [&>*]:flex-1   [&>*]:text-center [&>*]:text-stone-900 [&>*]:appearance-none"
         >
           <select className="px-3" name="gender" defaultValue="">
             <option value="" disabled hidden>
@@ -71,7 +83,7 @@ export default function Shop(props: shopProps) {
               </option>
             ))}
           </select>
-          <div className="flex [&>*]:flex-1 [&>*]:rounded-xl [&>*]:h-full text-slate-200 px-0 gap-2 ">
+          <div className="flex [&>*]:flex-1 [&>*]:rounded-md [&>*]:h-full text-slate-200 px-0 gap-2 ">
             <button type="submit" className="bg-orange-200 hover:bg-orange-300">
               <span className=" md:max-lg:hidden">Apply </span>
               <i aria-hidden className="fa fa-check"></i>
@@ -159,9 +171,15 @@ export default function Shop(props: shopProps) {
                   isTrending={product.isTrending}
                   inBasket={product.inBasket}
                   toggleCart={props.toggleCart}
+                  Designer={product.Designer}
                 />
               );
           })}
+          {filteredProducts <= 0 && (
+            <h1 className="text-xl md:text-3xl p-5 md:border-b-2 border-stone-800 my-20 mx-5">
+              Sorry, we could not find what you are looking for!
+            </h1>
+          )}
           <span className="w-full text-10px m-5 py-4 text-stone-400 md:px-20 border-t-2 border-b-2 border-stone-400 md:hidden">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem
             deleniti laudantium consectetur! Eos facilis omnis, officia illo

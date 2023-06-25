@@ -67,7 +67,7 @@ export default function Aside() {
         <h2 className="w-full px-2 text-8px lg:text-10px mt-6 md:mt-2">
           This website is not a commercial project and so payments are not
           supported. With that in mind make sure not to disclose any authentic
-          personal information because, although not likely, they might get
+          personal information because, as unlikely as it may be, they might get
           unintentionally leaked.
         </h2>
       </div>
@@ -122,7 +122,7 @@ export default function Aside() {
                 <div className="w-full h-10 flex items-center justify-around">
                   <div className="w-3/4 h-3/4 bg-stone-400"></div>
                   <span>
-                    <em>{cvv}</em>
+                    <em>{cvv.toString().slice(3)}</em>
                   </span>
                 </div>
                 <p className="text-8px text-slate-300 px-3">

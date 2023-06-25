@@ -1,10 +1,14 @@
 import Navbar from "../../components/navbar";
 import Shop from "./browse_page";
-import getProduct from "../functions/get_products";
 import { toggleCart } from "../functions/toggle_cart";
+import { prisma } from "@/db";
 
 export default async function Browse() {
-  const products = await getProduct();
+  const products = await prisma.product.findMany({
+    include: {
+      Designer: true,
+    },
+  });
   return (
     <>
       <Navbar page={1} />

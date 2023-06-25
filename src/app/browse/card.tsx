@@ -1,16 +1,15 @@
 "use client";
 
 import { cardProps } from "@/types";
-import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 export const sizes = ["XXS", "XS", "S", "M", "L", "XL", "XXL"];
 
 export default function Card(props: cardProps) {
-  const { replace } = useRouter();
   return (
     <div
       tabIndex={0}
-      className="overflow-hidden relative h-500px w-full sm:w-450px  shrink-0 sm:rounded-lg bg-cover bg-center  group "
+      className="overflow-hidden relative h-500px w-full sm:w-450px shrink-0 sm:rounded-md bg-cover bg-center group "
       style={{ backgroundImage: `url(${props.image})` }}
     >
       <div className="absolute w-full h-full bg-stone-900 bg-opacity-40 z-1 flex flex-col justify-between opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-all duration-500">
@@ -20,8 +19,8 @@ export default function Card(props: cardProps) {
 
             onClick={async () => {
               await props.toggleCart(props.id, true);
+              await Swal.fire("Success!", "Added to cart!", "success");
               window.location.reload();
-              // replace("/browse");
             }}
             className="w-12 h-12 rounded-2xl bg-blue-500  opacity-60 hover:opacity-90 transition-all duration-300"
           >
@@ -44,21 +43,24 @@ export default function Card(props: cardProps) {
             <p>{props.name}</p>
             <p>{props.price}$</p>
           </span>
-          <p className="text-sm text-stone-200 break-all">
+          <p className="text-xs text-stone-300 break-all">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
             consequatur fuga minima pariatur fugiat sunt explicabo facere iusto
             eligendi, ipsum illum vero eaque nihil harum accusantium
             reprehenderit, beatae quo exercitationem?
           </p>
-          <span className="w-full flex justify-evenly items-center">
-            {sizes.map((size) => (
-              <button
-                key={Math.random()}
-                className="cursor-default w-10 h-10 bg-stone-900 rounded-3xl text-slate-100"
-              >
-                {size}
-              </button>
-            ))}
+          <span className="relative w-full flex justify-start items-center gap-2 text-slate-100 bg-stone-900 bg-opacity-40 rounded-md px-5 py-2 text-sm">
+            <div
+              className="w-8 aspect-square rounded-full bg-center bg-cover border border-slate-100"
+              style={{ backgroundImage: `url(${props.Designer?.image})` }}
+            ></div>
+            <span className="transform translate-x-96 group-hover:translate-x-0 group-focus:translate-x-0 transition-all duration-500">
+              {props.Designer?.name}
+            </span>
+
+            <span className="absolute -top-3 right-5 text-sm text-stone-300">
+              Designer
+            </span>
           </span>
         </footer>
       </div>
