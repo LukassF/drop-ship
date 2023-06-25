@@ -129,7 +129,7 @@ export default async function About() {
                 name={designer.name}
                 id={designer.id}
                 since={designer.since}
-                designed={designer.productsDesigned}
+                productsDesigned={designer.productsDesigned}
                 hierarchy={designer.hierarchy}
                 image={designer.image}
               />
