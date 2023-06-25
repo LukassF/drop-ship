@@ -2,25 +2,39 @@
 
 import { cardProps } from "@/types";
 import Swal from "sweetalert2";
+import { AppDispatch, useAppSelector } from "@/data/redux-store";
+import { addToBasket } from "@/data/slice";
+import { useDispatch } from "react-redux";
 
 export const sizes = ["XXS", "XS", "S", "M", "L", "XL", "XXL"];
 
 export default function Card(props: cardProps) {
+  //redux variables
+  const dispatch = useDispatch<AppDispatch>();
+  const basket = useAppSelector((state) => state.persistedReducer.basket);
   return (
     <div
       tabIndex={0}
-      className="overflow-hidden relative h-500px w-full sm:w-450px shrink-0 sm:rounded-md bg-cover bg-center group "
+      className="overflow-hidden relative h-500px w-full sm:w-450px shrink-0 sm:rounded-md bg-cover bg-center group cursor-default"
       style={{ backgroundImage: `url(${props.image})` }}
     >
       <div className="absolute w-full h-full bg-stone-900 bg-opacity-40 z-1 flex flex-col justify-between opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-all duration-500">
         <header className="flex justify-between p-2 z-20 transfrom -translate-y-full group-focus:-translate-y-0 group-hover:-translate-y-0 transition-all duration-500">
           <button
-            //addToCart function passed as a prop from grandparent to run on a server
-
-            onClick={async () => {
-              await props.toggleCart(props.id, true);
-              await Swal.fire("Success!", "Added to cart!", "success");
-              window.location.reload();
+            onClick={() => {
+              dispatch(
+                addToBasket({
+                  id: props.id,
+                  name: props.name,
+                  price: props.price,
+                  image: props.image,
+                  gender: props.gender,
+                  style: props.style,
+                  type: props.type,
+                  quantity: 1,
+                })
+              );
+              Swal.fire("Success!", "Added to cart!", "success");
             }}
             className="w-12 h-12 rounded-2xl bg-blue-500  opacity-60 hover:opacity-90 transition-all duration-300"
           >

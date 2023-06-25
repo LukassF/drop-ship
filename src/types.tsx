@@ -2,10 +2,9 @@ import { Designer, Product } from "@prisma/client";
 
 export type shopProps = {
   products: (Product & { Designer: Designer | null })[];
-  toggleCart: (id: number, isTrue: boolean) => void;
 };
 
-export type cardProps = Omit<cartItemProps, "gender" | "style" | "type"> & {
+export type cardProps = Omit<cartItemProps, "quantity"> & {
   inBasket: boolean | null;
 } & { Designer: DesignerCardProps | null };
 
@@ -18,7 +17,7 @@ export type cartItemProps = {
   gender: string;
   style: string;
   type: string;
-  toggleCart: (id: number, isTrue: boolean) => void;
+  quantity: number;
 };
 
 export type categoriesType = {

@@ -17,6 +17,7 @@ module.exports = {
         "500px": "500px",
         "init-screen": "850px",
         "init-screen/2": "425px",
+        "2init-screen/3": "570px",
         "4init-screen/5": "680px",
         "300px": "300px",
         "210px": "210px",

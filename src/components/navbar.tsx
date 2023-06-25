@@ -1,14 +1,16 @@
+"use client";
+
 import { prisma } from "@/db";
 import { navbarProps } from "@/types";
 import Link from "next/link";
+import { AppDispatch, store, useAppSelector } from "@/data/redux-store";
+import { addToBasket, removeFromBasket, resetBasket } from "@/data/slice";
+import { useDispatch } from "react-redux";
 
-export default async function Navbar({ page }: navbarProps) {
-  const cartItems = await prisma.product.findMany({
-    where: {
-      inBasket: true,
-    },
-  });
-  // console.log(cartItems);
+export default function Navbar({ page }: navbarProps) {
+  //redux variables
+  const basket = useAppSelector((state) => state.persistedReducer.basket);
+
   const linkList = [
     { id: 1, href: "/browse", icon: "magnifying-glass", title: "Browse" },
     { id: 2, href: "/cart", icon: "shopping-basket", title: "Cart" },
@@ -35,9 +37,7 @@ export default async function Navbar({ page }: navbarProps) {
               // ? "shadow-md shadow-white hover:shadow-md hover:shadow-white"
               // : ""
             } ${
-              link.title === "Cart" &&
-              cartItems.length > 0 &&
-              "after:opacity-100"
+              link.title === "Cart" && basket.length > 0 && "after:opacity-100"
             }`}
           >
             <i aria-hidden className={`fa fa-${link.icon}`}></i>

@@ -2,18 +2,17 @@
 
 import { sizes } from "@/app/browse/card";
 import { cartItemProps } from "@/types";
-import { useRouter } from "next/navigation";
-import { createRef, useState, useEffect } from "react";
+import { createRef, useState } from "react";
+import { AppDispatch } from "@/data/redux-store";
+import { removeFromBasket, updateQuantity } from "@/data/slice";
+import { useDispatch } from "react-redux";
 
 export default function CartItem(props: cartItemProps) {
-  const { push } = useRouter();
-  // const [shouldUpdate, setShouldUpdate] = useState<boolean>(false);
-  const [quantity, setQuantity] = useState<number>(1);
-  const itemRef = createRef<HTMLElement>();
+  //redux variables
+  const dispatch = useDispatch<AppDispatch>();
 
-  // useEffect(() => {
-  //   if (shouldUpdate) push("/cart");
-  // }, [shouldUpdate]);
+  // const [quantity, setQuantity] = useState<number>(1);
+  const itemRef = createRef<HTMLElement>();
 
   return (
     <article
@@ -62,10 +61,8 @@ export default function CartItem(props: cartItemProps) {
         <div className="flex flex-col flex-1 justify-end xl:justify-center items-start xl:items-center p-5 ">
           <button
             //removing item from cart
-            onClick={async () => {
-              await props.toggleCart(props.id, false);
-              window.location.reload();
-              // itemRef.current?.classList.add("hidden");
+            onClick={() => {
+              dispatch(removeFromBasket(props.id));
             }}
             className="absolute top-2 right-2 md:top-5 md:right-5 w-6 h-6 text-sm md:text-xl text-stone-600 hover:text-stone-900"
           >
@@ -79,24 +76,26 @@ export default function CartItem(props: cartItemProps) {
               <button
                 className="w-8 h-8 bg-stone-300 text-xl rounded-md"
                 onClick={() =>
-                  setQuantity((prev) => (prev >= 2 ? prev - 1 : prev))
+                  dispatch(updateQuantity({ id: props.id, type: "decrement" }))
                 }
               >
                 -
               </button>
               <div className="w-8 h-8 px-2 py-1 text-2xl flex items-center justify-center">
-                {quantity}
+                {props.quantity}
               </div>
               <button
                 className="w-8 h-8 bg-stone-300 text-xl rounded-md"
-                onClick={() => setQuantity((prev) => prev + 1)}
+                onClick={() =>
+                  dispatch(updateQuantity({ id: props.id, type: "increment" }))
+                }
               >
                 +
               </button>
             </span>
           </div>
           <span className="absolute bottom-5 right-5 text-sm md:text-xl text-slate-700">
-            {(props.price * quantity).toFixed(2)}$
+            {(props.price * props.quantity).toFixed(2)}$
           </span>
         </div>
       </div>

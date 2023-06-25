@@ -1,17 +1,18 @@
-import { prisma } from "@/db";
+"use client";
+
 import CartItem from "./cart_item";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import { toggleCart } from "../functions/toggle_cart";
 import Link from "next/link";
 import Aside from "./aside";
+import { AppDispatch, useAppSelector } from "@/data/redux-store";
+import { resetBasket } from "@/data/slice";
+import { useDispatch } from "react-redux";
 
-export default async function Cart() {
-  const products = await prisma?.product?.findMany({
-    where: {
-      inBasket: true,
-    },
-  });
+export default function Cart() {
+  //redux variables
+  const basket = useAppSelector((state) => state.persistedReducer.basket);
+  const dispatch = useDispatch<AppDispatch>();
 
   return (
     <>
@@ -22,8 +23,8 @@ export default async function Cart() {
             My wishlist!
           </h1>
           <hr className="w-full h-3px -mt-10 bg-stone-400"></hr>
-          {products.length > 0 ? (
-            products.map((product) => (
+          {basket.length > 0 ? (
+            basket.map((product) => (
               <CartItem
                 key={product.id}
                 id={product.id}
@@ -34,7 +35,7 @@ export default async function Cart() {
                 gender={product.gender}
                 style={product.style}
                 type={product.type}
-                toggleCart={toggleCart}
+                quantity={product.quantity}
               />
             ))
           ) : (
@@ -274,12 +275,29 @@ export default async function Cart() {
             </div>
           )}
 
-          {products.length > 0 && (
-            <span className="w-full h-12 md:h-20 flex justify-center items-center gap-5">
-              <button className="w-full h-full bg-stone-300 rounded-xl text-md md:text-xl">
-                Go to payments
-              </button>
-            </span>
+          {basket.length > 0 && (
+            <>
+              <hr className="w-full h-1 bg-stone-300"></hr>
+              <div className="w-full text-right px-2 text-xl">
+                Total:&nbsp;
+                {basket
+                  .reduce((acc, item) => acc + item.price * item.quantity, 0)
+                  .toFixed(2)}
+                $
+              </div>
+              <hr className="w-full h-1 bg-stone-300"></hr>
+              <span className="w-full h-12 md:h-20 flex justify-center items-center gap-5 ">
+                <button className="w-full h-full bg-stone-300 rounded-xl text-md md:text-xl hover:bg-stone-400 hover:text-stone-100">
+                  Go to payments
+                </button>
+                <button
+                  className="w-full h-full bg-stone-300 rounded-xl text-md md:text-xl hover:bg-stone-400 hover:text-stone-100"
+                  onClick={() => dispatch(resetBasket(basket))}
+                >
+                  Remove All
+                </button>
+              </span>
+            </>
           )}
         </section>
         <Aside />

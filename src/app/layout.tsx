@@ -1,5 +1,7 @@
+import { ReduxProvider } from "@/data/provider";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import { ReduxPersistor } from "@/data/persistor";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +21,9 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className={`${inter.className} bg-transparent text-slate-900 overflow-x-hidden`}
       >
-        {children}
+        <ReduxProvider>
+          <ReduxPersistor>{children}</ReduxPersistor>
+        </ReduxProvider>
         <script
           src="https://kit.fontawesome.com/f83777b1f5.js"
           crossOrigin="anonymous"

@@ -1,6 +1,5 @@
 import Navbar from "../../components/navbar";
 import Shop from "./browse_page";
-import { toggleCart } from "../functions/toggle_cart";
 import { prisma } from "@/db";
 
 export default async function Browse() {
@@ -12,7 +11,7 @@ export default async function Browse() {
   return (
     <>
       <Navbar page={1} />
-      <Shop products={products} toggleCart={toggleCart} />
+      <Shop products={products} />
     </>
   );
 }
