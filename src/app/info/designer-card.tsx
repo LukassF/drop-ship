@@ -19,7 +19,7 @@ export default function Designer(props: DesignerCardProps) {
       </p>
       <span className="w-full flex justify-between items-center text-xs">
         <p>Since {props.since}</p>
-        <p>{props.designed}k products designed!</p>
+        <p>{props.productsDesigned}k products designed!</p>
       </span>
     </div>
   );
