@@ -68,7 +68,7 @@ input[type=number] {
 }
 @media screen and (max-width:767px){
   #card-form input{
-    background-color: rgb(230, 227, 227);
+    background-color: rgb(199, 197, 197);
   }
 }
 

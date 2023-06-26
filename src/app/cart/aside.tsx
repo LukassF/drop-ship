@@ -23,7 +23,7 @@ export default function Aside() {
   });
   const [cardNumber, setCardNumber] = useState<string>("");
   const [date, setDate] = useState<Date>(new Date());
-  const [cvv, setCvv] = useState<number>(111);
+  const [cvv, setCvv] = useState<number>(0);
   const [clicked, setClicked] = useState<boolean>(false);
 
   if (typeof window !== "undefined")
@@ -37,7 +37,7 @@ export default function Aside() {
 
   return (
     <aside
-      className="z-40 md:z-10 w-screen sm:w-4screen/5 md:w-1/3 h-screen bg-stone-300 bg-opacity-80 backdrop-blur md:backdrop-blur-none md:bg-opacity-100 fixed right-0 pt-20 transform transition-all md:transition-none translate-x-full md:translate-x-0 px-3"
+      className="z-40 md:z-10 w-screen sm:w-4screen/5 md:w-1/3 h-screen bg-stone-300 bg-opacity-90 backdrop-blur md:backdrop-blur-none md:bg-opacity-100 fixed right-0 pt-20 transform transition-all md:transition-none translate-x-full md:translate-x-0 px-3"
       ref={containerRef}
     >
       <button
@@ -61,7 +61,7 @@ export default function Aside() {
         <i aria-hidden className="fa fa-credit-card" ref={iconRef}></i>
       </button>
       <h1 className="text-md sm:text-xl xl:text-2xl  text-slate-900 w-full text-right md:text-left p-2">
-        Assign your payments
+        Assign your payment method
       </h1>
       <div className="text-stone-500">
         <h2 className="w-full px-2 text-8px lg:text-10px mt-6 md:mt-2">
@@ -122,7 +122,7 @@ export default function Aside() {
                 <div className="w-full h-10 flex items-center justify-around">
                   <div className="w-3/4 h-3/4 bg-stone-400"></div>
                   <span>
-                    <em>{cvv}</em>
+                    <em>{cvv !== 0 ? cvv : "XXX"}</em>
                   </span>
                 </div>
                 <p className="text-8px text-slate-300 px-3">
