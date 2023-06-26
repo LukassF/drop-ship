@@ -16,7 +16,7 @@ export default function CartItem(props: cartItemProps) {
 
   return (
     <article
-      className="w-full h-40 md:h-auto lg:h-300px rounded-xl flex overflow-hidden relative border border-stone-500"
+      className="w-full md:h-auto lg:h-300px rounded-xl flex overflow-hidden relative border border-stone-500"
       ref={itemRef}
     >
       <div
@@ -24,7 +24,7 @@ export default function CartItem(props: cartItemProps) {
         style={{ backgroundImage: `url(${props.image})` }}
       ></div>
       <div className="w-2/3 flex flex-col xl:flex-row">
-        <div className="flex flex-col flex-1 justify-evenly p-5">
+        <div className="flex flex-col flex-1 justify-evenly px-5 py-1 md:py-5">
           <span className="text-lg md:text-2xl text-slate-900">
             {props.name}
           </span>
@@ -72,7 +72,7 @@ export default function CartItem(props: cartItemProps) {
             <label className="hidden xl:block text-slate-900 text-xl">
               Quantity
             </label>
-            <span className="flex scale-90 md:scale-100 -mt-6 sm:-mt-0 gap-2">
+            <span className="flex scale-90 md:scale-100 -mt-3 sm:-mt-0 gap-2">
               <button
                 className="w-8 h-8 bg-stone-300 text-xl rounded-md"
                 onClick={() =>

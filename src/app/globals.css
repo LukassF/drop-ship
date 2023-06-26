@@ -30,7 +30,6 @@ input[type=number] {
     height:30px;
     font-size: 0.6em;
     padding-left:5px;
-    border-radius: 2px;
   }
   #card-form label{
     font-size: 10px;
@@ -49,7 +48,6 @@ input[type=number] {
 @media screen and (max-width:500px){
   #card-form input{
     height:30px;
-    border-radius: 2px;
     font-size: 0.8em;
     padding-left: 5px;
   }
