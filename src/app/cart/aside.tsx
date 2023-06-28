@@ -37,7 +37,7 @@ export default function Aside() {
 
   return (
     <aside
-      className="overflow-y-auto z-40 md:z-10 w-screen sm:w-4screen/5 md:w-1/3 h-screen bg-stone-300 bg-opacity-90 backdrop-blur md:backdrop-blur-none md:bg-opacity-100 fixed right-0 pt-20 transform transition-all md:transition-none translate-x-full md:translate-x-0 px-3"
+      className="z-40 md:z-10 w-screen sm:w-4screen/5 md:w-1/3 min-h-screen bg-stone-300 bg-opacity-100 md:bg-opacity-100 fixed right-0 pt-20 transform transition-all md:transition-none translate-x-full md:translate-x-0 px-3"
       ref={containerRef}
     >
       <button
