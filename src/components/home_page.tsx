@@ -7,6 +7,7 @@ export default function HomePage() {
       <section className="h-2init-screen/3 xl:h-init-screen w-full overflow-hidden relative bg-amber-400 mt-12 xl:mt-0 snap-center">
         <div className="absolute w-full h-full bg-stone-900 bg-opacity-30 lg:bg-opacity-0 z-10"></div>
         <article className="w-full h-full absolute xl:left-1/4 bg-center bg-cover bg-[url('https://agentestudio.com/uploads/post/image/91/main_fashion-website-design-cover.jpg')]"></article>
+        <div className="w-full h-full absolute bg-stone-900 bg-opacity-10"></div>
         <div className=" z-20 absolute top-1/2 left-1/2 lg:left-1/4 transfrom -translate-y-1/2 -translate-x-1/2 lg:-translate-x-1/3 text-slate-100 w-full md:w-1/2 px-8 flex flex-col gap-2 xl:gap-16 items-center md:items-start">
           <h1 className="text-3xl xl:text-6xl">
             Check out our most popular collection!

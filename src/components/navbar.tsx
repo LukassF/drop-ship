@@ -21,7 +21,7 @@ export default function Navbar({ page }: navbarProps) {
       className={`flex justify-between items-center px-5 md:px-10 py-2 fixed w-full z-50 text-slate-100 bg-stone-900 ${
         page === 0
           ? "bg-opacity-100 xl:bg-opacity-0"
-          : "bg-opacity-100 xl:bg-opacity-70 backdrop-blur"
+          : "bg-opacity-100 xl:bg-opacity-100"
       }`}
     >
       <h1 className="text-xl">
